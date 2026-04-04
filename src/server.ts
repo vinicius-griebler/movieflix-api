@@ -21,6 +21,27 @@ app.get("/movies", async (_, res) => {
     res.json(movies);
 });
 
+app.delete("/movies/:id", async (req, res) => {
+    const id = Number(req.params.id);
+
+    try {
+        const movie = await prisma.movie.findUnique({ where: { id } });
+
+        if (!movie) {
+            return res.status(404).send({ message: "O filme não foi encontrado " });
+        }
+
+        await prisma.movie.delete({ where: { id } });
+    } catch(error){
+        return res.status(500).send({ message: "Não foi possivel remover o filme" });
+    }
+
+    res.status(200).send();
+
+});
+
+
+
 app.post("/movies", async (req, res) => {
     const { title, genre_id, language_id, oscar_count, release_date } = req.body;
 
