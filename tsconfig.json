@@ -3,10 +3,11 @@
     // ADICIONADO AQUI ✅
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
 
     // File Layout
-    // "rootDir": "./src",
-    // "outDir": "./dist",
+     "rootDir": "./",
+      "outDir": "./dist",
 
     // Environment Settings
     "module": "CommonJS",
@@ -33,5 +34,8 @@
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
     "skipLibCheck": true
-  }
+  },
+  "include": ["src", "swagger.json"],
+  "exclude": ["node_modules"]
+
 }
